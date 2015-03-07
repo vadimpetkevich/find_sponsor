@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
   enum role: [:Investor, :Businessman]
   belongs_to :profile, :polymorphic => true, :dependent => :destroy
 
-  validates :login, presence: true, length: { maximum: 40 }
+  validates :login, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: false }
 end
