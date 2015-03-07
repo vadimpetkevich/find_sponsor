@@ -4,5 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  enum role: [:Investor, :Businessman]
   belongs_to :profile, :polymorphic => true, :dependent => :destroy
+
+  validates :login, presence: true, length: { maximum: 40 }
 end

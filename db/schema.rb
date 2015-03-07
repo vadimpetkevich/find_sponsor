@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150307005331) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "login"
+    t.integer  "role"
     t.integer  "profile_id"
     t.string   "profile_type"
     t.string   "first_name"

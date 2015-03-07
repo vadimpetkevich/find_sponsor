@@ -36,6 +36,9 @@ gem 'devise'
 
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem "slim-rails"
+
+gem 'pry'
 
 
 group :development, :test do
