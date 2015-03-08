@@ -33,10 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'cancan'
 
 gem 'bootstrap-sass'
 gem 'simple_form'
-gem "slim-rails"
+gem 'slim-rails'
 
 
 group :development, :test do
