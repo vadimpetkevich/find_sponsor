@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @idea.title
+p
+  strong Description:
+  = @idea.description
+p
+  strong Branch:
+  = @idea.branch
+p
+  strong Location:
+  = @idea.location
+p
+  strong Team:
+  = @idea.team
+p
+  strong Plans:
+  = @idea.plans
+p
+  strong Demands:
+  = @idea.demands
+p
+  strong Businessman:
+  = @idea.businessman_id
+
+= link_to 'Edit', edit_idea_path(@idea)
+'|
+= link_to 'Back', ideas_path

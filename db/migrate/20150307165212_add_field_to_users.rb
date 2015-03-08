@@ -8,6 +8,6 @@ class AddFieldToUsers < ActiveRecord::Migration
 
     add_column :users, :role, :integer
     add_column :users, :profile_id, :integer
-    add_column :users, :profile_type, :integer
+    add_column :users, :profile_type, :string
   end
 end

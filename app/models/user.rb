@@ -1,11 +1,18 @@
 class User < ActiveRecord::Base
+  before_save :set_profile
+
+  enum role: [:Investor, :Businessman]
+  validates :login, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: false }
+  belongs_to :profile, :polymorphic => true, :dependent => :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: [:Investor, :Businessman]
-  belongs_to :profile, :polymorphic => true, :dependent => :destroy
-
-  validates :login, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: false }
+  private
+    def set_profile
+      unless self.profile
+        self.profile = self.role == 0 ? Investor.new : Businessman.new
+      end
+    end
 end

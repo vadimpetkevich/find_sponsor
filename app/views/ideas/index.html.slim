@@ -1,0 +1,35 @@
+h1 Listing ideas
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Branch
+      th Location
+      th Team
+      th Plans
+      th Demands
+      th Businessman
+      th
+      th
+      th
+
+  tbody
+    - @ideas.each do |idea|
+      tr
+        td = idea.title
+        td = idea.description
+        td = idea.branch
+        td = idea.location
+        td = idea.team
+        td = idea.plans
+        td = idea.demands
+        td = idea.businessman_id
+        td = link_to 'Show', idea
+        td = link_to 'Edit', edit_idea_path(idea)
+        td = link_to 'Destroy', idea, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Idea', new_idea_path
