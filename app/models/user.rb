@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def role? role
+    self.role == role.to_s
+  end
+
   private
     def set_profile
       unless self.profile

@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
   # GET /ideas
@@ -11,6 +12,11 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+  end
+
+  def my
+    @ideas = current_user.profile.ideas
+    render 'index'
   end
 
   # GET /ideas/new

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ideas/my'
   resources :ideas
   devise_for :users, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
