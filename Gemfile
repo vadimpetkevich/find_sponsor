@@ -35,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'cancan'
 
-gem 'bootstrap-sass'
+gem "twitter-bootstrap-rails"
 gem 'simple_form'
 gem 'slim-rails'
 
