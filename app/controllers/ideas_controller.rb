@@ -32,6 +32,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new(idea_params)
+    pry
     @idea.businessman = current_user.profile
     respond_to do |format|
       if @idea.save
