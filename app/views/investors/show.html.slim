@@ -1,0 +1,42 @@
+- model_class = Investor
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:login) + ':'
+  br
+  = @investor.login
+p
+  strong= model_class.human_attribute_name(:first_name) + ':'
+  br
+  = @investor.first_name
+p
+  strong= model_class.human_attribute_name(:last_name) + ':'
+  br
+  = @investor.last_name
+p
+  strong= model_class.human_attribute_name(:skype) + ':'
+  br
+  = @investor.skype
+p
+  strong= model_class.human_attribute_name(:branch) + ':'
+  br
+  = @investor.branch
+p
+  strong= model_class.human_attribute_name(:location) + ':'
+  br
+  = @investor.location
+p
+  strong= model_class.human_attribute_name(:provide) + ':'
+  br
+  = @investor.provide
+p
+  strong= model_class.human_attribute_name(:team_role) + ':'
+  br
+  = @investor.team_role
+
+= link_to t('.back', :default => t("helpers.links.back")), investors_path, :class => 'btn btn-default'
+'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_investor_path(@investor), :class => 'btn btn-default'
+'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), investor_path(@investor), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
