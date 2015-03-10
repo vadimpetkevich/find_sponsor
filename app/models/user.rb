@@ -1,12 +1,17 @@
 class User < ActiveRecord::Base
   before_save :set_profile
 
-  enum role: [:Investor, :Businessman]
   belongs_to :profile, :polymorphic => true, :dependent => :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :role, presence: true
+  enum role: [:Investor, :Businessman, :Admin]
+
+  validates :login, presence: true, length: { in: 2..40 }, uniqueness: true
 
   def role? role
     self.role == role.to_s
@@ -15,7 +20,14 @@ class User < ActiveRecord::Base
   private
     def set_profile
       unless self.profile
-        self.profile = self.role == 'Investor' ? Investor.new : Businessman.new
+        self.profile = case self.role
+                            when 'Investor'
+                              Investor.new
+                            when 'Businessman'
+                              Businessman.new
+                            else
+                              nil
+                            end
       end
     end
 end

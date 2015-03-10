@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 ('a'..'z').each { |s|
-  User.create(password: '12345678', email: s + '@ex.by', role: (Random.rand(0..10) % 2))
+  User.create(password: '12345678', email: s + '@ex.by', role: (Random.rand(0..10) % 2), login: s + 'a')
 }

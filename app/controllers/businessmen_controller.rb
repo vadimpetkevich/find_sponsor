@@ -26,7 +26,6 @@ class BusinessmenController < ApplicationController
   # POST /businessmen.json
   def create
     @businessman = Businessman.new(businessman_params)
-
     respond_to do |format|
       if @businessman.save
         format.html { redirect_to @businessman, notice: 'Businessman was successfully created.' }
@@ -70,6 +69,6 @@ class BusinessmenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def businessman_params
-      params.require(:businessman).permit(:login, :first_name, :last_name)
+      params.require(:businessman).permit(:first_name, :last_name, :avatar)
     end
 end

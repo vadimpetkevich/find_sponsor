@@ -1,6 +1,4 @@
 = simple_form_for @investor, :html => { :class => "form-horizontal" } do |f|
-  = f.input :login
-  = error_span(@investor[:login])
   = f.input :first_name
   = error_span(@investor[:first_name])
   = f.input :last_name
@@ -15,6 +13,16 @@
   = error_span(@investor[:provide])
   = f.input :team_role
   = error_span(@investor[:team_role])
+  = f.input :birth_date
+  = error_span(@investor[:birth_date])
+  = f.input :avatar_file_name
+  = error_span(@investor[:avatar_file_name])
+  = f.input :avatar_content_type
+  = error_span(@investor[:avatar_content_type])
+  = f.input :avatar_file_size
+  = error_span(@investor[:avatar_file_size])
+  = f.input :avatar_updated_at
+  = error_span(@investor[:avatar_updated_at])
   = f.button :submit, :class => 'btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), investors_path, :class => 'btn btn-default'
