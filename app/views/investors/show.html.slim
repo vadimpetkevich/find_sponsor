@@ -3,10 +3,6 @@ div class="page-header"
   h1=t '.title', :default => model_class.model_name.human.titleize
 
 p
-  strong= model_class.human_attribute_name(:login) + ':'
-  br
-  = @investor.login
-p
   strong= model_class.human_attribute_name(:first_name) + ':'
   br
   = @investor.first_name
@@ -34,6 +30,26 @@ p
   strong= model_class.human_attribute_name(:team_role) + ':'
   br
   = @investor.team_role
+p
+  strong= model_class.human_attribute_name(:birth_date) + ':'
+  br
+  = @investor.birth_date
+p
+  strong= model_class.human_attribute_name(:avatar_file_name) + ':'
+  br
+  = @investor.avatar_file_name
+p
+  strong= model_class.human_attribute_name(:avatar_content_type) + ':'
+  br
+  = @investor.avatar_content_type
+p
+  strong= model_class.human_attribute_name(:avatar_file_size) + ':'
+  br
+  = @investor.avatar_file_size
+p
+  strong= model_class.human_attribute_name(:avatar_updated_at) + ':'
+  br
+  = @investor.avatar_updated_at
 
 = link_to t('.back', :default => t("helpers.links.back")), investors_path, :class => 'btn btn-default'
 '

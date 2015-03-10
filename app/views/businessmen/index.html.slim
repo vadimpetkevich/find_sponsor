@@ -5,20 +5,28 @@ table class="table table-striped"
   thead
     tr
       th= model_class.human_attribute_name(:id)
-      th= model_class.human_attribute_name(:login)
       th= model_class.human_attribute_name(:first_name)
       th= model_class.human_attribute_name(:last_name)
       th= model_class.human_attribute_name(:skype)
+      th= model_class.human_attribute_name(:birth_date)
+      th= model_class.human_attribute_name(:avatar_file_name)
+      th= model_class.human_attribute_name(:avatar_content_type)
+      th= model_class.human_attribute_name(:avatar_file_size)
+      th= model_class.human_attribute_name(:avatar_updated_at)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @businessmen.each do |businessman|
       tr
         td= link_to businessman.id, businessman_path(businessman)
-        td= businessman.login
         td= businessman.first_name
         td= businessman.last_name
         td= businessman.skype
+        td= businessman.birth_date
+        td= businessman.avatar_file_name
+        td= businessman.avatar_content_type
+        td= businessman.avatar_file_size
+        td= businessman.avatar_updated_at
         td=l businessman.created_at
         td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_businessman_path(businessman), :class => 'btn btn-default btn-xs'

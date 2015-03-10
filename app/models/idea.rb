@@ -1,5 +1,8 @@
 class Idea < ActiveRecord::Base
+  nilify_blanks
+
   belongs_to :businessman
-  validates :title, :description, :branch, :location, :demands, :businessman_id, presence: true
-  validates :title, :branch, :location, length: { maximum: 140 }
+
+  validates :title, presence: true, length: { in: 2..100 }
+  validates :branch, :location,  length: { maximum: 40 }
 end
