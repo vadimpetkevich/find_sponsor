@@ -14,12 +14,13 @@ class InvestorsController < ApplicationController
   end
 
   # GET /investors/new
-  def new
-    @investor = Investor.new
-  end
+  #def new
+  #  @investor = Investor.new
+  #end
 
   # GET /investors/1/edit
   def edit
+
   end
 
   # POST /investors
@@ -43,6 +44,7 @@ class InvestorsController < ApplicationController
   def update
     respond_to do |format|
       if @investor.update(investor_params)
+        pry
         format.html { redirect_to @investor, notice: 'Investor was successfully updated.' }
         format.json { render :show, status: :ok, location: @investor }
       else
@@ -70,6 +72,6 @@ class InvestorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def investor_params
-      params.require(:investor).permit(:first_name, :last_name, :branch, :location, :provide, :team_role, :avatar)
+      params.require(:investor).permit(:first_name, :last_name, :skype, :branch, :location, :provide, :team_role, :birth_date, :avatar)
     end
 end

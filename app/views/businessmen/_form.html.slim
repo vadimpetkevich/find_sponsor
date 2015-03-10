@@ -7,14 +7,8 @@
   = error_span(@businessman[:skype])
   = f.input :birth_date
   = error_span(@businessman[:birth_date])
-  = f.input :avatar_file_name
-  = error_span(@businessman[:avatar_file_name])
-  = f.input :avatar_content_type
-  = error_span(@businessman[:avatar_content_type])
-  = f.input :avatar_file_size
-  = error_span(@businessman[:avatar_file_size])
-  = f.input :avatar_updated_at
-  = error_span(@businessman[:avatar_updated_at])
+  = f.input :avatar
+  = error_span(@businessman[:avatar])
   = f.button :submit, :class => 'btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), businessmen_path, :class => 'btn btn-default'

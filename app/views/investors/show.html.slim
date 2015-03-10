@@ -4,56 +4,10 @@
     .col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
         .col-sm-12
           .col-xs-12.col-sm-8
-            h1
-              = @investor.user.login
-            blockquote
-              -if @investor.first_name
-                p
-                  small = model_class.human_attribute_name(:first_name) + ':'
-                  = @investor.first_name
-              -if @investor.last_name
-                p
-                  small= model_class.human_attribute_name(:last_name) + ':'
-                  = @investor.last_name
-              -if @investor.skype
-                p
-                  small= model_class.human_attribute_name(:skype) + ':'
-                  = @investor.skype
-              -if @investor.branch
-                p
-                  small= model_class.human_attribute_name(:branch) + ':'
-                  = @investor.branch
-              -if @investor.location
-                p
-                  small= model_class.human_attribute_name(:location) + ':'
-                  = @investor.location
-              -if @investor.provide
-                p
-                  small= model_class.human_attribute_name(:provide) + ':'
-                  = @investor.provide
-              -if @investor.team_role
-                p
-                  small= model_class.human_attribute_name(:team_role) + ':'
-                  = @investor.team_role
-              -if @investor.birth_date
-                p
-                  small= model_class.human_attribute_name(:birth_date) + ':'
-                  = @investor.birth_date
+            =render partial: 'investor_text_information'
           .col-xs-12.col-sm-4.text-center
             figure
               img.img-circle.img-responsive alt="" src==@investor.avatar.url
-              figcaption.ratings
-                p
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star-o
         .col-xs-12.divider.text-center
           .col-xs-12.col-sm-4.emphasis
             h2

@@ -1,42 +1,68 @@
 - model_class = Businessman
-div class="page-header"
-  h1=t '.title', :default => model_class.model_name.human.titleize
-
-p
-  strong= model_class.human_attribute_name(:first_name) + ':'
-  br
-  = @businessman.first_name
-p
-  strong= model_class.human_attribute_name(:last_name) + ':'
-  br
-  = @businessman.last_name
-p
-  strong= model_class.human_attribute_name(:skype) + ':'
-  br
-  = @businessman.skype
-p
-  strong= model_class.human_attribute_name(:birth_date) + ':'
-  br
-  = @businessman.birth_date
-p
-  strong= model_class.human_attribute_name(:avatar_file_name) + ':'
-  br
-  = @businessman.avatar_file_name
-p
-  strong= model_class.human_attribute_name(:avatar_content_type) + ':'
-  br
-  = @businessman.avatar_content_type
-p
-  strong= model_class.human_attribute_name(:avatar_file_size) + ':'
-  br
-  = @businessman.avatar_file_size
-p
-  strong= model_class.human_attribute_name(:avatar_updated_at) + ':'
-  br
-  = @businessman.avatar_updated_at
-
-= link_to t('.back', :default => t("helpers.links.back")), businessmen_path, :class => 'btn btn-default'
-'
-= link_to t('.edit', :default => t("helpers.links.edit")), edit_businessman_path(@businessman), :class => 'btn btn-default'
-'
-= link_to t('.destroy', :default => t("helpers.links.destroy")), businessman_path(@businessman), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+.container
+  .row
+    .col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
+        .col-sm-12
+          .col-xs-12.col-sm-8
+            =render partial: 'businessman_text_information'
+          .col-xs-12.col-sm-4.text-center
+            figure
+              img.img-circle.img-responsive alt="" src==@businessman.avatar.url
+              figcaption.ratings
+                p
+                  a href="#"
+                    span.fa.fa-star
+                  a href="#"
+                    span.fa.fa-star
+                  a href="#"
+                    span.fa.fa-star
+                  a href="#"
+                    span.fa.fa-star
+                  a href="#"
+                    span.fa.fa-star-o
+        .col-xs-12.divider.text-center
+          .col-xs-12.col-sm-4.emphasis
+            h2
+              strong 20,7K
+            p
+              small Followers
+            button.btn.btn-success.btn-block
+              span.fa.fa-plus-circle
+              | Follow
+          .col-xs-12.col-sm-4.emphasis
+            h2
+              strong 245
+            p
+              small Following
+            button.btn.btn-info.btn-block
+              span.fa.fa-user
+              | View Profile
+          .col-xs-12.col-sm-4.emphasis
+            h2
+              strong 43
+            p
+              small Snippets
+            .btn-group.dropup.btn-block
+              button.btn.btn-primary type="button"
+                span.fa.fa-gear
+                | Options
+              button.btn.btn-primary.dropdown-toggle data-toggle="dropdown" type="button"
+                span.caret
+                span.sr-only Toggle Dropdown
+              ul.dropdown-menu.text-left role="menu"
+                li
+                  a href="#"
+                    span.fa.fa-envelope.pull-right
+                    | Send an email
+                li
+                  a href="#"
+                    span.fa.fa-list.pull-right
+                    | Add or remove from a list
+                li.divider
+                li
+                  a href="#"
+                    span.fa.fa-warning.pull-right
+                    | Report this user for spam
+                li.divider
+                li
+                  a.btn.disabled href="#" role="button"  Unfollow

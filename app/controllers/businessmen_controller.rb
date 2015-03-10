@@ -14,9 +14,9 @@ class BusinessmenController < ApplicationController
   end
 
   # GET /businessmen/new
-  def new
-    @businessman = Businessman.new
-  end
+  #def new
+  #  @businessman = Businessman.new
+  #end
 
   # GET /businessmen/1/edit
   def edit
@@ -69,6 +69,6 @@ class BusinessmenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def businessman_params
-      params.require(:businessman).permit(:first_name, :last_name, :avatar)
+      params.require(:businessman).permit(:first_name, :last_name, :skype, :birth_date, :avatar)
     end
 end

@@ -1,0 +1,20 @@
+- model_class = Businessman
+h1
+  = @businessman.user.login
+blockquote
+  -if @businessman.first_name
+    p
+      small = model_class.human_attribute_name(:first_name) + ':'
+      = @businessman.first_name
+  -if @businessman.last_name
+    p
+      small= model_class.human_attribute_name(:last_name) + ':'
+      = @businessman.last_name
+  -if @businessman.skype
+    p
+      small= model_class.human_attribute_name(:skype) + ':'
+      a= @businessman.skype
+  -if @businessman.birth_date
+    p
+      small= model_class.human_attribute_name(:birth_date) + ':'
+      = @businessman.birth_date
