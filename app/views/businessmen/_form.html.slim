@@ -5,7 +5,7 @@
   = error_span(@businessman[:last_name])
   = f.input :skype
   = error_span(@businessman[:skype])
-  = f.input :birth_date
+  = f.input :birth_date, start_year: Time.now.year - 90, end_year: Time.now.year - 8
   = error_span(@businessman[:birth_date])
   = f.input :avatar
   = error_span(@businessman[:avatar])

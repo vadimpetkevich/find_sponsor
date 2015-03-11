@@ -13,7 +13,7 @@
   = error_span(@investor[:provide])
   = f.input :team_role
   = error_span(@investor[:team_role])
-  = f.input :birth_date
+  = f.input :birth_date, start_year: Time.now.year - 90, end_year: Time.now.year - 8
   = error_span(@investor[:birth_date])
   = f.input :avatar
   = error_span(@investor[:avatar])
