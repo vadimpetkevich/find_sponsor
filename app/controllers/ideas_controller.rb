@@ -6,7 +6,11 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    if params[:businessman_id]
+      @ideas = Idea.where(businessman_id: params[:businessman_id])
+    else
+      @ideas = Idea.all
+    end
   end
 
   # GET /ideas/1

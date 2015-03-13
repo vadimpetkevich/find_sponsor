@@ -1,39 +1,58 @@
 - model_class = Idea
-div class="page-header"
-  h1=t '.title', :default => model_class.model_name.human.titleize
 
-p
-  strong= model_class.human_attribute_name(:title) + ':'
-  br
-  = @idea.title
-p
-  strong= model_class.human_attribute_name(:description) + ':'
-  br
-  = @idea.description
-p
-  strong= model_class.human_attribute_name(:branch) + ':'
-  br
-  = @idea.branch
-p
-  strong= model_class.human_attribute_name(:location) + ':'
-  br
-  = @idea.location
-p
-  strong= model_class.human_attribute_name(:team) + ':'
-  br
-  = @idea.team
-p
-  strong= model_class.human_attribute_name(:plans) + ':'
-  br
-  = @idea.plans
-p
-  strong= model_class.human_attribute_name(:demands) + ':'
-  br
-  = @idea.demands
-p
-  strong= model_class.human_attribute_name(:businessman_id) + ':'
-  br
-  = @idea.businessman_id
+.container
+  .row
+    .col-sm-8.blog-main
+      .blog-post
+        h2.blog-post-title = @idea.title
+        p.blog-post-meta
+          = @idea.created_at
+          a href="#" = ' ' + @idea.businessman.user.login
+        figcaption.ratings
+          p
+            a href="#"
+              span.fa.fa-star
+            a href="#"
+              span.fa.fa-star
+            a href="#"
+              span.fa.fa-star
+            a href="#"
+              span.fa.fa-star
+            a href="#"
+              span.fa.fa-star-o
+        hr
+        - if @idea.branch
+          blockquote
+            p
+              - @idea.branch.split.each do |word|
+                kbd = word
+                = ' '
+        - if @idea.description
+          p
+            .jumbotron
+              em =@idea.description
+        - if @idea.location
+          h3 = model_class.human_attribute_name(:location) + ':'
+          p = @idea.location
+        - if @idea.team
+          h3 = model_class.human_attribute_name(:team) + ':'
+          p = @idea.team
+        - if @idea.plans
+          h3 = model_class.human_attribute_name(:plans) + ':'
+          p = @idea.plans
+        - if @idea.demands
+          hr
+          h3 = model_class.human_attribute_name(:demands) + ':'
+          .jumbotron
+            = @idea.demands
+
+    .col-sm-3.col-sm-offset-1.blog-sidebar
+      .sidebar-module.sidebar-module-inset
+        h4 About
+        p
+          | Etiam porta
+          em sem malesuada magna
+          | mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
 
 = link_to t('.back', :default => t("helpers.links.back")), ideas_path, :class => 'btn btn-default'
 '

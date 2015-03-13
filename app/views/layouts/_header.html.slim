@@ -6,30 +6,23 @@
       span.icon-bar
       span.icon-bar
 
-    a.navbar-brand href="#"Find Sponsor
+    a.navbar-brand href="/home"Find Sponsor
     .navbar-collapse.collapse.navbar-responsive-collapse
       ul.nav.navbar-nav
-
-        li = link_to "Home", '#'
         li = link_to "About", '#'
         li = link_to "Help", '#'
-
+      ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li id="fat-menu" class="dropdown"
             a href="#" class="dropdown-toggle" data-toggle="dropdown"
               = current_user.login
               b class="caret"
 
-            ul class="dropdown-menu"
-              li
-                = link_to "Ideas", ideas_path
-              li
-                = link_to "Profile", '#'
-              li
-                = link_to "Settings", '#'
-              li class="divider"
-              li
-                = link_to "Sign out", destroy_user_session_path, method: :delete
+            - case current_user.role
+            -when 'Investor'
+              = render partial: 'layouts/dropdown_investor'
+            -when 'Businessman'
+              = render partial: 'layouts/dropdown_businessman'
         - else
           li
             = link_to "Sign in", new_user_session_path

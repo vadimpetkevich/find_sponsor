@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  match 'home', to: 'static_pages#home', via: :get
+
   resources :businessmen
 
   resources :investors
 
-  get 'ideas/my'
   resources :ideas
 
   devise_for :users, :controllers => { registrations: 'registrations' }
