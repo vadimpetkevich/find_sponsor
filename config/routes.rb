@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  match 'home', to: 'static_pages#home', via: :get
+  root 'home#show'
 
   resources :businessmen
 
