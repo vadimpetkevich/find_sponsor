@@ -1,37 +1,6 @@
 - model_class = Idea
-div class="page-header"
-  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-table class="table table-striped"
-  thead
-    tr
-      th= model_class.human_attribute_name(:id)
-      th= model_class.human_attribute_name(:title)
-      th= model_class.human_attribute_name(:description)
-      th= model_class.human_attribute_name(:branch)
-      th= model_class.human_attribute_name(:location)
-      th= model_class.human_attribute_name(:team)
-      th= model_class.human_attribute_name(:plans)
-      th= model_class.human_attribute_name(:demands)
-      th= model_class.human_attribute_name(:businessman_id)
-      th= model_class.human_attribute_name(:created_at)
-      th=t '.actions', :default => t("helpers.actions")
-  tbody
+.container-fluid.span-6
+  .row-fluid
     - @ideas.each do |idea|
-      tr
-        td= link_to idea.id, idea_path(idea)
-        td= idea.title
-        td= idea.description
-        td= idea.branch
-        td= idea.location
-        td= idea.team
-        td= idea.plans
-        td= idea.demands
-        td= idea.businessman_id
-        td=l idea.created_at
-        td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_idea_path(idea), :class => 'btn btn-default btn-xs'
-          '
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), idea_path(idea), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_idea_path, :class => 'btn btn-primary'
-
+      = render partial: 'idea', locals: { idea: idea }
+      hr

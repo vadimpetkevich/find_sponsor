@@ -1,21 +1,27 @@
 - model_class = Businessman
-h1.text-center
-  em = @businessman.user.login
 
-blockquote
-  -if @businessman.first_name
-    p
-      small= model_class.human_attribute_name(:first_name) + ':'
-      = @businessman.first_name
-  -if @businessman.last_name
-    p
-      small= model_class.human_attribute_name(:last_name) + ':'
-      = @businessman.last_name
-  -if @businessman.skype
-    p
-      small= model_class.human_attribute_name(:skype) + ':'
-      a= @businessman.skype
-  -if @businessman.birth_date
-    p
-      small= model_class.human_attribute_name(:birth_date) + ':'
-      = @businessman.birth_date
+.info-card-header
+  h1 = @businessman.user.login
+
+table.table.table-user-information
+  tbody
+    -if @businessman.first_name
+      tr
+        td = model_class.human_attribute_name(:first_name) + ':'
+        td = @businessman.first_name
+
+    -if @businessman.last_name
+      tr
+        td =  model_class.human_attribute_name(:last_name) + ':'
+        td = @businessman.last_name
+
+    -if @businessman.skype
+      tr
+        td =  model_class.human_attribute_name(:skype) + ':'
+        td
+          a = @businessman.skype
+
+    -if @businessman.birth_date
+      tr
+        td =  model_class.human_attribute_name(:birth_date) + ':'
+        td = @businessman.birth_date

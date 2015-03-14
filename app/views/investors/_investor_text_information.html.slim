@@ -1,36 +1,50 @@
 - model_class = Investor
-h1
-  = @investor.user.login
-blockquote
-  -if @investor.first_name
-    p
-      small = model_class.human_attribute_name(:first_name) + ':'
-      = @investor.first_name
-  -if @investor.last_name
-    p
-      small= model_class.human_attribute_name(:last_name) + ':'
-      = @investor.last_name
-  -if @investor.skype
-    p
-      small= model_class.human_attribute_name(:skype) + ':'
-      a= @investor.skype
-  -if @investor.branch
-    p
-      small= model_class.human_attribute_name(:branch) + ':'
-      = @investor.branch
-  -if @investor.location
-    p
-      small= model_class.human_attribute_name(:location) + ':'
-      = @investor.location
-  -if @investor.provide
-    p
-      small= model_class.human_attribute_name(:provide) + ':'
-      = @investor.provide
-  -if @investor.team_role
-    p
-      small= model_class.human_attribute_name(:team_role) + ':'
-      = @investor.team_role
-  -if @investor.birth_date
-    p
-      small= model_class.human_attribute_name(:birth_date) + ':'
-      = @investor.birth_date
+
+.info-card-header
+  h1 = @investor.user.login
+
+table.table.table-user-information
+  tbody
+    -if @investor.first_name
+      tr
+        td = model_class.human_attribute_name(:first_name) + ':'
+        td = @investor.first_name
+
+    -if @investor.last_name
+      tr
+        td =  model_class.human_attribute_name(:last_name) + ':'
+        td = @investor.last_name
+
+    -if @investor.skype
+      tr
+        td =  model_class.human_attribute_name(:skype) + ':'
+        td
+          a = @investor.skype
+
+    -if @investor.branch
+      tr
+        td =  model_class.human_attribute_name(:branch) + ':'
+        td
+          -@investor.branch.split.each do |word|
+            span.label.label-info = word
+            = ' '
+
+    -if @investor.location
+      tr
+        td =  model_class.human_attribute_name(:location) + ':'
+        td = @investor.location
+
+    -if @investor.provide
+      tr
+        td =  model_class.human_attribute_name(:provide) + ':'
+        td = @investor.provide
+
+    -if @investor.team_role
+      tr
+        td =  model_class.human_attribute_name(:team_role) + ':'
+        td = @investor.team_role
+
+    -if @investor.birth_date
+      tr
+        td =  model_class.human_attribute_name(:birth_date) + ':'
+        td = @investor.birth_date

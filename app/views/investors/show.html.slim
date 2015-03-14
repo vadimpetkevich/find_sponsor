@@ -8,6 +8,7 @@
           .col-xs-12.col-sm-4.text-center
             figure
               img.img-circle.img-responsive alt="" src==@investor.avatar.url
+              br
             -if current_user.profile == @investor
               =link_to edit_businessman_path(@investor)
                 button.btn.btn-info.btn-block

@@ -1,0 +1,20 @@
+.span8
+  h3 = idea.title
+  h6
+    =link_to 'More...', idea_path(idea)
+-if idea.businessman == current_user.profile
+  .span2
+    .btn-group
+      a.btn.dropdown-toggle.btn-info data-toggle="dropdown" href="#"
+        | Action
+        span.icon-cog.icon-white
+        span.caret
+      ul.dropdown-menu
+        li
+          = link_to edit_idea_path(idea)
+            span.icon-wrench
+            | Edit
+        li
+          = link_to idea_path(idea), :method => :delete
+            span.icon-trash
+            | Delete

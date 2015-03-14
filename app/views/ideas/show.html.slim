@@ -6,8 +6,8 @@
       .blog-post
         h2.blog-post-title = @idea.title
         p.blog-post-meta
-          = @idea.created_at
-          a href="#" = ' ' + @idea.businessman.user.login
+          = @idea.created_at.to_date.to_s + ' by '
+          = link_to @idea.businessman.user.login, businessman_path(@idea.businessman)
         figcaption.ratings
           p
             a href="#"
@@ -20,17 +20,12 @@
               span.fa.fa-star
             a href="#"
               span.fa.fa-star-o
+
         hr
-        - if @idea.branch
-          blockquote
-            p
-              - @idea.branch.split.each do |word|
-                kbd = word
-                = ' '
         - if @idea.description
           p
             .jumbotron
-              em =@idea.description
+              em = @idea.description
         - if @idea.location
           h3 = model_class.human_attribute_name(:location) + ':'
           p = @idea.location
@@ -48,11 +43,12 @@
 
     .col-sm-3.col-sm-offset-1.blog-sidebar
       .sidebar-module.sidebar-module-inset
+      - if @idea.branch
         h4 About
         p
-          | Etiam porta
-          em sem malesuada magna
-          | mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+          - @idea.branch.split.each do |word|
+            span.label.label-info = word
+            = ' '
 
 = link_to t('.back', :default => t("helpers.links.back")), ideas_path, :class => 'btn btn-default'
 '
