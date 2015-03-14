@@ -20,6 +20,13 @@
                     span.fa.fa-star
                   a href="#"
                     span.fa.fa-star-o
+
+            -if current_user.profile == @businessman
+              =link_to edit_businessman_path(@businessman)
+                button.btn.btn-info.btn-block
+                  span.fa.fa-user
+                  |   Edit profile
+
         .col-xs-12.divider.text-center
           .col-xs-12.col-sm-4.emphasis
             h2
@@ -30,3 +37,4 @@
               button.btn.btn-success.btn-block
                 span.fa.fa-folder
                 |   See them
+
