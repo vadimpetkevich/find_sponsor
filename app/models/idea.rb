@@ -1,5 +1,6 @@
 class Idea < ActiveRecord::Base
   nilify_blanks
+  acts_as_votable
 
   belongs_to :businessman
 

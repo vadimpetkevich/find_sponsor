@@ -1,10 +1,15 @@
 - model_class = Investor
 
 .info-card-header
-  h1 = @investor.user.login
+  h1
+    cite
+      small Investor
 
 table.table.table-user-information
   tbody
+    tr
+      td = model_class.human_attribute_name(:login) + ':'
+      td = @investor.user.login
     -if @investor.first_name
       tr
         td = model_class.human_attribute_name(:first_name) + ':'

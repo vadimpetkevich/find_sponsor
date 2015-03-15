@@ -18,11 +18,6 @@ class IdeasController < ApplicationController
   def show
   end
 
-  def my
-    @ideas = current_user.profile.ideas
-    render 'index'
-  end
-
   # GET /ideas/new
   def new
     @idea = Idea.new
@@ -69,6 +64,28 @@ class IdeasController < ApplicationController
     respond_to do |format|
       format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def like
+    @idea = Idea.find(params[:id])
+    @idea.liked_by current_user.profile
+
+    if request.xhr?
+      head :ok
+    else
+      redirect_to @idea
+    end
+  end
+
+  def dislike
+    @idea = Idea.find(params[:id])
+    @idea.disliked_by current_user.profile
+
+    if request.xhr?
+      head :ok
+    else
+      redirect_to @idea
     end
   end
 

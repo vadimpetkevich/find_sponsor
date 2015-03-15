@@ -1,0 +1,15 @@
+.span2
+  .btn-group
+    a.btn.dropdown-toggle.btn-info.btn-xs data-toggle="dropdown" href="#"
+      | Action
+      span.icon-cog.icon-white
+      span.caret
+    ul.dropdown-menu
+      li
+        = link_to edit_idea_path(idea)
+          span.icon-wrench
+          | Edit
+      li
+        = link_to idea_path(idea), :method => :delete
+          span.icon-trash
+          | Delete

@@ -3,9 +3,9 @@ class HomeController < ApplicationController
     if user_signed_in?
       case current_user.role
       when 'Investor'
-        render 'investor'
+        redirect_to ideas_url and return
       when 'Businessman'
-        render 'investor'
+        redirect_to investors_url and return
       end
     else
       render 'guest'

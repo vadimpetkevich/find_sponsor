@@ -1,0 +1,11 @@
+.span2
+  .btn-group
+    a.btn.dropdown-toggle.btn-info.btn-xs data-toggle="dropdown" href="#"
+      | Action
+      span.icon-cog.icon-white
+      span.caret
+    ul.dropdown-menu
+      li
+        = link_to edit_investor_path(investor)
+          span.icon-wrench
+          | Edit
