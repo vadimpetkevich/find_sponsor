@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :role, presence: true
-  enum role: [:Investor, :Businessman, :Admin]
+  enum role: [:investor, :businessman, :admin]
 
   validates :login, presence: true, length: { in: 2..40 }, uniqueness: true
 
@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
     def set_profile
       unless self.profile
         self.profile = case self.role
-                            when 'Investor'
+                            when 'investor'
                               Investor.new
-                            when 'Businessman'
+                            when 'businessman'
                               Businessman.new
                             end
       end

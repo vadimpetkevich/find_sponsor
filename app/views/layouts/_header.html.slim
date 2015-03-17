@@ -19,9 +19,9 @@
               b class="caret"
 
             - case current_user.role
-            -when 'Investor'
+            -when 'investor'
               = render partial: 'layouts/dropdown_investor'
-            -when 'Businessman'
+            -when 'businessman'
               = render partial: 'layouts/dropdown_businessman'
         - else
           li

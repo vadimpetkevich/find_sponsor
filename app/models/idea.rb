@@ -5,14 +5,16 @@ class Idea < ActiveRecord::Base
 
   belongs_to :businessman
 
-  scope :published, -> { where(published: true) }
-
   validates :title, presence: true, length: { in: 2..100 }
   validates :businessman_id, presence: true
   validates :branch, :location,  length: { maximum: 40 }
 
+  scope :published, -> { where(published: true) }
+
   private
     def send_email
-      puts 'here' * 100
+      if self.published
+        User.investor.each { |investor| IdeaMailer.published_email(investor).deliver_now }
+      end
     end
 end
