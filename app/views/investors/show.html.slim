@@ -10,7 +10,7 @@
               img.img-circle.img-responsive alt="" src==@investor.avatar.url
               br
             -if current_user.profile == @investor
-              =link_to edit_businessman_path(@investor)
+              =link_to edit_investor_path(@investor)
                 button.btn.btn-info.btn-block
                   span.fa.fa-user
                   |   Edit profile

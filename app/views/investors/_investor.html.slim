@@ -9,4 +9,4 @@
       =link_to 'More...', investor_path(investor)
 
       -if investor == current_user.profile
-        = render partial: 'action', locals: { businessman: investor }
+        = render partial: 'action', locals: { investor: investor }
