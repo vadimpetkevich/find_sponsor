@@ -1,0 +1,9 @@
+.container.span8
+  h2
+    | There is new published idea
+
+/    '
+/    = link_to @user.login, businessman_url(@idea.businessman)
+/  h3 = @idea.title
+/  h6
+/    =link_to 'More...', idea_url(@idea)

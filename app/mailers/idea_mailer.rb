@@ -1,6 +1,7 @@
 class IdeaMailer < ApplicationMailer
-  def published_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'New Published Idea')
+  include Sidekiq::Mailer
+
+  def published_email(investor, idea)
+    mail(to: 'petkevich.minsk@gmail.com', subject: 'New Published Idea')
   end
 end

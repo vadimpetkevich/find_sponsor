@@ -89,6 +89,17 @@ class IdeasController < ApplicationController
     end
   end
 
+  def interesting
+    @idea = Idea.find(params[:id])
+    @idea.liked_by current_user.profile, vote_scope: 'interesting'
+
+    if request.xhr?
+      head :ok
+    else
+      redirect_to @idea
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
@@ -97,6 +108,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :branch, :location, :team, :plans, :demands)
+      params.require(:idea).permit(:title, :published, :description, :branch, :location, :team, :plans, :demands)
     end
 end
