@@ -100,6 +100,13 @@ class IdeasController < ApplicationController
     end
   end
 
+  def publish
+    @idea = Idea.find(params[:id])
+    @idea.published = true
+    @idea.save
+    redirect_to @idea, notice: 'Idea has been published'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
@@ -108,6 +115,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :published, :description, :branch, :location, :team, :plans, :demands)
+      params.require(:idea).permit(:title, :description, :branch, :location, :team, :plans, :demands)
     end
 end

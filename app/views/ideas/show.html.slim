@@ -20,6 +20,8 @@
               span.fa.fa-star
             a href="#"
               span.fa.fa-star-o
+          -if @idea.businessman == current_user.profile
+            = render partial: 'action', locals: { idea: @idea }
 
         hr
         - if @idea.description

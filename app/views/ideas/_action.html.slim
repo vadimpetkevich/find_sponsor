@@ -5,6 +5,11 @@
       span.icon-cog.icon-white
       span.caret
     ul.dropdown-menu
+      -unless idea.published
+        li
+          = link_to publish_idea_path(idea), method: :put
+            span.icon-wrench
+            | Publish
       li
         = link_to edit_idea_path(idea)
           span.icon-wrench

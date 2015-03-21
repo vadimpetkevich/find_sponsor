@@ -13,8 +13,6 @@ class Idea < ActiveRecord::Base
 
   private
     def send_email
-      puts '*' * 100
-      puts 'send_email' * 20
       if self.published
         User.investor.each { |investor| IdeaMailer.published_email(investor, self).deliver }
       end
