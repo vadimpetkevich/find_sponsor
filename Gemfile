@@ -45,7 +45,9 @@ gem 'nilify_blanks'
 
 gem 'acts_as_votable'
 
-gem 'mailcatcher'
+gem 'sidekiq'
+gem 'sidekiq_mailer'
+gem 'devise-async'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

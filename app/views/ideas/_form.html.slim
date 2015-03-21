@@ -1,6 +1,8 @@
 = simple_form_for @idea, :html => { :class => "form-horizontal" } do |f|
   = f.input :title
   = error_span(@idea[:title])
+  = f.input :published
+  = error_span(@idea[:published])
   = f.input :description
   = error_span(@idea[:description])
   = f.input :branch

@@ -11,3 +11,10 @@
     |  Dislike
     '
     = idea.get_dislikes.count
+'
+= link_to interesting_idea_path(idea), method: :put, remote: true
+  button.btn.btn-info.btn-xs
+    span.fa.fa-quote-right
+    |  It's interesting
+    '
+    = idea.get_likes(vote_scope: 'interesting').count
