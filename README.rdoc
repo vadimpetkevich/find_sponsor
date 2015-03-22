@@ -1,9 +1,5 @@
-= News Portal
-== Configuration
-
-Dependencies:
-
-  sudo apt-get install imagemagick postgresql
+= Find a Sponsor
+== Instructions for running
   
 Install gems:
 
@@ -11,23 +7,20 @@ Install gems:
 
 Configure database:
 
+  fill 'username' and 'password' in config/database.yml
   bundle exec rake db:setup
-  
-Populate test database
 
-  bundle exec rake db:seed RAILS_ENV='test'
+Configure environments:
+  create file config/environment_variables.yml with following content
+    development:
+    GMAIL_USERNAME: name@gmail.com
+    GMAIL_PASSWORD: password
   
-Run test
-  
-  bundle exec rspec spec
-  
-== Credentials
-  
-  admin@mail.com - 12345678
-  editor@mail.com - 12345678
-  reporter@mail.com - 12345678
-  user@mail.com - 12345678
+  Seed:
+    rake db:seed
 
-  
-  
+Run sidekiq:
+  sidekiq -q mailer -c 5
 
+Run application:
+  rails s
