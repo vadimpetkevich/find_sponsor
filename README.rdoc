@@ -1,5 +1,5 @@
 = Find a Sponsor
-== Instructions for running
+Instructions for running
   
 Install gems:
 
@@ -7,7 +7,7 @@ Install gems:
 
 Configure database:
 
-  fill 'username' and 'password' in config/database.yml
+fill 'username' and 'password' in config/database.yml
   bundle exec rake db:setup
 
 Configure environments:
