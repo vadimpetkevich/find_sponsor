@@ -5,18 +5,16 @@ Install gems:
 
   bundle install
 
-Configure database:
-Fill 'username' and 'password' in config/database.yml
+Configure database: fill 'username' and 'password' in config/database.yml
 
 Create database:
 
   bundle exec rake db:setup
 
-Configure environments:
-  create file config/environment_variables.yml with following content
-    development:
-    GMAIL_USERNAME: name@gmail.com
-    GMAIL_PASSWORD: password
+Configure environments: create file config/environment_variables.yml with following content
+  development:
+  GMAIL_USERNAME: name@gmail.com
+  GMAIL_PASSWORD: password
   
 Seed:
   rake db:seed
