@@ -2,10 +2,31 @@ ul class="dropdown-menu"
   li
     = link_to "Profile", businessman_path(current_user.profile)
   li
-    =link_to 'My ideas', ideas_path(businessman_id: current_user.profile.id)
-  li
-    = link_to "Settings", '#'
+    = link_to '#'
+      span.fa.fa-cog
+      '
+      | Settings
 
   li class="divider"
   li
-    = link_to "Sign out", destroy_user_session_path, method: :delete
+    =link_to 'Investors', investors_path
+    =link_to 'Businessmen', businessmen_path
+    =link_to 'Ideas', ideas_path
+
+  li class="divider"
+  li
+    =link_to new_idea_path
+      span.fa.fa-plus-square-o
+      '
+      | New idea
+
+  li
+    =link_to for_businessman_ideas_path(businessman_id: current_user.profile.id)
+      span.fa.fa-folder
+      '
+      | My ideas
+
+
+  li class="divider"
+  li
+    = link_to 'Sign out', destroy_user_session_path, method: :delete

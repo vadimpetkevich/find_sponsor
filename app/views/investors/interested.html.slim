@@ -1,0 +1,7 @@
+- model_class = Investor
+
+.container
+  .row
+    .col-xs-12.col-sm-6.col-md-6
+      - @investors.each do |investor|
+        = render partial: 'investor', locals: { investor: investor }

@@ -1,10 +1,35 @@
-.span8
-  h3 = idea.title
-  h6
-    =link_to 'More...', idea_path(idea)
+/! First Blog Post
+h1.text-center
+  cite
+    small
+      = idea.title
 
   -if idea.businessman == current_user.profile
     = render partial: 'action', locals: { idea: idea }
-    br
-  = render partial: 'like_dislike', locals: { idea: idea }
+
+p
+  cite
+    | by
+    '
+    = link_to idea.businessman.user.login, businessman_path(idea.businessman)
+/! Date/Time
+p
+  span.fa.fa-clock-o
+  |  Posted on
+  '
+  = idea.created_at.to_date.to_s
+p
+  span.fa.fa-info-circle
+  '
+  = idea.published ? 'Published idea' : 'This idea has not be published yet'
+
+=link_to idea_path(idea)
+  button.btn.btn-info
+    | Read more...
+
+hr
+
+
+
+
 

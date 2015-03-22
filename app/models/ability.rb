@@ -2,9 +2,24 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    #user ||= User.new # guest user
-    #if user.role? 'Businessman'
-    can :manage, :all
-    #end
+    user ||= User.new # guest user
+
+    alias_action :like, :dislike, :interesting, :to => :vote
+    case user.role
+    when 'businessman'
+      can :manage, Idea
+      cannot :vote, Idea
+
+      can [:read, :update], Businessman
+      can [:read, :interested], Investor
+    when 'investor'
+      can [:read, :vote], Idea
+
+      can [:read, :update], Investor
+      can :read, Businessman
+    when 'admin'
+      can :manage, :all
+      cannot :vote, Idea
+    end
   end
 end

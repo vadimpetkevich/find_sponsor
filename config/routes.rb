@@ -3,7 +3,13 @@ Rails.application.routes.draw do
 
   resources :businessmen
 
-  resources :investors
+  resources :investors do
+    collection do
+      get 'interested', to: 'investors#interested'
+    end
+  end
+
+
 
   resources :ideas do
     member do
@@ -11,6 +17,10 @@ Rails.application.routes.draw do
       put 'dislike', to: 'ideas#dislike'
       put 'interesting', to: 'ideas#interesting'
       put 'publish', to: 'ideas#publish'
+    end
+
+    collection do
+      get 'for_businessman', to: 'ideas#for_businessman'
     end
   end
 

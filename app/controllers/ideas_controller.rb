@@ -1,16 +1,16 @@
 class IdeasController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :like, :dislike, :interesting, :publish]
 
   # GET /ideas
   # GET /ideas.json
   def index
-    if params[:businessman_id]
-      @ideas = Idea.where(businessman_id: params[:businessman_id])
-    else
       @ideas = Idea.all
-    end
+  end
+
+  def for_businessman
+      @ideas = Idea.where(businessman_id: params[:businessman_id])
   end
 
   # GET /ideas/1
@@ -34,7 +34,7 @@ class IdeasController < ApplicationController
     @idea.businessman = current_user.profile
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        format.html { redirect_to for_businessman_ideas_path(businessman_id: @idea.businessman.id), notice: 'Idea was successfully created.' }
         format.json { render :show, status: :created, location: @idea }
       else
         format.html { render :new }
@@ -62,13 +62,12 @@ class IdeasController < ApplicationController
   def destroy
     @idea.destroy
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to for_businessman_ideas_path(businessman_id: @idea.businessman.id), notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def like
-    @idea = Idea.find(params[:id])
     @idea.liked_by current_user.profile
 
     if request.xhr?
@@ -79,7 +78,6 @@ class IdeasController < ApplicationController
   end
 
   def dislike
-    @idea = Idea.find(params[:id])
     @idea.disliked_by current_user.profile
 
     if request.xhr?
@@ -90,7 +88,6 @@ class IdeasController < ApplicationController
   end
 
   def interesting
-    @idea = Idea.find(params[:id])
     @idea.liked_by current_user.profile, vote_scope: 'interesting'
 
     if request.xhr?
@@ -101,7 +98,6 @@ class IdeasController < ApplicationController
   end
 
   def publish
-    @idea = Idea.find(params[:id])
     @idea.published = true
     @idea.save
     redirect_to @idea, notice: 'Idea has been published'

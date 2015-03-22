@@ -1,11 +1,17 @@
 class InvestorsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   before_action :set_investor, only: [:show, :edit, :update, :destroy]
 
   # GET /investors
   # GET /investors.json
   def index
     @investors = Investor.all
+  end
+
+  def interested
+    idea = Idea.find(params[:idea_id])
+    @investors = idea.get_likes(:vote_scope => 'interesting').voters
   end
 
   # GET /investors/1
@@ -20,7 +26,6 @@ class InvestorsController < ApplicationController
 
   # GET /investors/1/edit
   def edit
-
   end
 
   # POST /investors
@@ -44,7 +49,6 @@ class InvestorsController < ApplicationController
   def update
     respond_to do |format|
       if @investor.update(investor_params)
-        pry
         format.html { redirect_to @investor, notice: 'Investor was successfully updated.' }
         format.json { render :show, status: :ok, location: @investor }
       else

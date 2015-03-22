@@ -1,60 +1,71 @@
 - model_class = Idea
 
-.container
-  .row
-    .col-sm-8.blog-main
-      .blog-post
-        h2.blog-post-title = @idea.title
-        p.blog-post-meta
-          = @idea.created_at.to_date.to_s + ' by '
-          = link_to @idea.businessman.user.login, businessman_path(@idea.businessman)
-        figcaption.ratings
-          p
-            a href="#"
-              span.fa.fa-star
-            a href="#"
-              span.fa.fa-star
-            a href="#"
-              span.fa.fa-star
-            a href="#"
-              span.fa.fa-star
-            a href="#"
-              span.fa.fa-star-o
-          -if @idea.businessman == current_user.profile
-            = render partial: 'action', locals: { idea: @idea }
+.row
+  /! Blog Post Content Column
+  .col-lg-8
+    /! Blog Post
+    /! Title
+    h1.text-center
+      cite
+        small
+          = @idea.title
 
-        hr
-        - if @idea.description
-          p
-            .jumbotron
-              em = @idea.description
-        - if @idea.location
-          h3 = model_class.human_attribute_name(:location) + ':'
-          p = @idea.location
-        - if @idea.team
-          h3 = model_class.human_attribute_name(:team) + ':'
-          p = @idea.team
-        - if @idea.plans
-          h3 = model_class.human_attribute_name(:plans) + ':'
-          p = @idea.plans
-        - if @idea.demands
-          h3 = model_class.human_attribute_name(:demands) + ':'
-          .jumbotron
-            = @idea.demands
+      -if @idea.businessman == current_user.profile
+        = render partial: 'action', locals: { idea: @idea }
 
-        = render partial: 'like_dislike', locals: { idea: @idea }
+    /! Author
+    p
+      cite
+        | by
+        '
+        = link_to @idea.businessman.user.login, businessman_path(@idea.businessman)
 
-    .col-sm-3.col-sm-offset-1.blog-sidebar
+    /! Date/Time
+    p
+      span.fa.fa-clock-o
+      |  Posted on
+      '
+      = @idea.created_at.to_date.to_s
+
+    p
+      span.fa.fa-info-circle
+      '
+      = @idea.published ? 'Published idea' : 'This idea has not be published yet'
+
+    /! Post Content
+    - if @idea.description
+      .jumbotron
+        p = @idea.description
+    - if @idea.location
+      h3
+        cite = model_class.human_attribute_name(:location) + ':'
+      p = @idea.location
+    - if @idea.team
+      h3
+        cite = model_class.human_attribute_name(:team) + ':'
+      p = @idea.team
+    - if @idea.plans
+      h3
+        cite = model_class.human_attribute_name(:plans) + ':'
+      p = @idea.plans
+    - if @idea.demands
+      h3
+        cite = model_class.human_attribute_name(:demands) + ':'
+      = @idea.demands
+
+    hr
+
+  .col-sm-3.col-sm-offset-1.blog-sidebar
       .sidebar-module.sidebar-module-inset
       - if @idea.branch
-        h4 About
+        h4 This idea about
         p
           - @idea.branch.split.each do |word|
             span.label.label-info = word
-            = ' '
+            '
+      - if can? :vote, Idea
+        = render partial: 'vote', locals: { idea: @idea }
+      - else
+        = render partial: 'vote_info', locals: { idea: @idea }
 
-/= link_to t('.back', :default => t("helpers.links.back")), ideas_path, :class => 'btn btn-default'
-/'
-/= link_to t('.edit', :default => t("helpers.links.edit")), edit_idea_path(@idea), :class => 'btn btn-default'
-/'
-/= link_to t('.destroy', :default => t("helpers.links.destroy")), idea_path(@idea), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+

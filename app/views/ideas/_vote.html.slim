@@ -1,0 +1,18 @@
+= link_to like_idea_path(idea), method: :put
+  button.btn.btn-primary.btn-xs
+    span.fa.fa-thumbs-o-up
+    |  Like
+    '
+    = idea.get_likes.count
+'
+= link_to dislike_idea_path(idea), method: :put
+  button.btn.btn-warning.btn-xs
+    span.fa.fa-thumbs-o-down
+    |  Dislike
+    '
+    = idea.get_dislikes.count
+'
+= link_to interesting_idea_path(idea), method: :put
+  button.btn.btn-info.btn-xs
+    span.fa.fa-question
+    |  It's interesting

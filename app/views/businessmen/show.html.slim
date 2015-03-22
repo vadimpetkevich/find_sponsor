@@ -33,8 +33,7 @@
               strong = @businessman.ideas.count
             p
               small Ideas
-            =link_to ideas_path(businessman_id: @businessman.id)
+            =link_to for_businessman_ideas_path(businessman_id: @businessman.id)
               button.btn.btn-success.btn-block
                 span.fa.fa-folder
                 |   See them
-

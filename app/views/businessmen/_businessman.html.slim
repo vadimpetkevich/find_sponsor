@@ -1,12 +1,13 @@
-.well.well-sm
-  .row
-    .col-sm-6.col-md-4
-      img.img-rounded.img-responsive alt="" src==businessman.avatar.url
-    .col-sm-6.col-md-8
-      h2
-        =businessman.user.login
+.row
+  .col-sm-6.col-md-4
+    img.img-rounded.img-responsive alt="" src==businessman.avatar.url
+  .col-sm-6.col-md-8
+    h2
+      =businessman.user.login
 
-      =link_to 'More...', businessman_path(businessman)
+    =link_to 'More...', businessman_path(businessman)
 
-      -if businessman == current_user.profile
-        = render partial: 'action', locals: { businessman: businessman }
+    -if businessman == current_user.profile
+      = render partial: 'action', locals: { businessman: businessman }
+
+hr

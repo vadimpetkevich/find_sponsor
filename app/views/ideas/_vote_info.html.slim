@@ -1,0 +1,16 @@
+hr
+
+span.fa.fa-thumbs-o-up
+'
+= idea.get_likes.count
+br
+
+span.fa.fa-thumbs-o-down
+'
+= idea.get_dislikes.count
+br
+
+span.fa.fa-question
+'
+= link_to interested_investors_path(idea_id: idea.id)
+    | Who are interested?
