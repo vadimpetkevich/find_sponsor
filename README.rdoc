@@ -7,7 +7,10 @@ Install gems:
 
 Configure database:
 
-fill 'username' and 'password' in config/database.yml
+  fill 'username' and 'password' in config/database.yml
+
+Create database:
+
   bundle exec rake db:setup
 
 Configure environments:
@@ -16,8 +19,8 @@ Configure environments:
     GMAIL_USERNAME: name@gmail.com
     GMAIL_PASSWORD: password
   
-  Seed:
-    rake db:seed
+Seed:
+  rake db:seed
 
 Run sidekiq:
   sidekiq -q mailer -c 5
