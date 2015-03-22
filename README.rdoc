@@ -6,8 +6,7 @@ Install gems:
   bundle install
 
 Configure database:
-
-  fill 'username' and 'password' in config/database.yml
+Fill 'username' and 'password' in config/database.yml
 
 Create database:
 
