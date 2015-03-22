@@ -1,5 +1,5 @@
-= Find a Sponsor
-Instructions for running
+== Find a Sponsor
+= Instructions for running
   
 Install gems:
 
