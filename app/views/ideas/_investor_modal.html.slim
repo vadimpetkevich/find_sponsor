@@ -1,0 +1,12 @@
+.modal-body
+  center
+    img.img-circle src== investor.avatar.url
+    h3.media-heading
+      = investor.user.login
+    cite
+      | investor
+.modal-footer
+  center
+    =link_to investor_path(investor)
+      button.btn.btn-default
+        | More information about

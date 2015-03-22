@@ -16,6 +16,7 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+    @interested_investors = @idea.get_likes(:vote_scope => 'interesting').voters
   end
 
   # GET /ideas/new
