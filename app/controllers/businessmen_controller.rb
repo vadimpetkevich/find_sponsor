@@ -15,9 +15,9 @@ class BusinessmenController < ApplicationController
   end
 
   # GET /businessmen/new
-  #def new
-  #  @businessman = Businessman.new
-  #end
+  def new
+    @businessman = Businessman.new
+  end
 
   # GET /businessmen/1/edit
   def edit

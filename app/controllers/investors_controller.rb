@@ -9,20 +9,14 @@ class InvestorsController < ApplicationController
     @investors = Investor.all
   end
 
-  def interested
-    idea = Idea.find(params[:idea_id])
-    @investors = idea.get_likes(:vote_scope => 'interesting').voters
-  end
-
   # GET /investors/1
   # GET /investors/1.json
   def show
   end
 
-  # GET /investors/new
-  #def new
-  #  @investor = Investor.new
-  #end
+  def new
+    @investor = Investor.new
+  end
 
   # GET /investors/1/edit
   def edit

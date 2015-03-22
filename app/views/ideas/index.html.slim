@@ -1,6 +1,8 @@
 - model_class = Idea
 
-row.col-md-8
+h2
+  center Ideas
 
+row.col-md-8
   - @ideas.each do |idea|
     = render partial: 'idea', locals: { idea: idea }

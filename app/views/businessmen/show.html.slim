@@ -1,39 +1,38 @@
 - model_class = Businessman
-.container
-  .row
-    .col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
-        .col-sm-12
-          .col-xs-12.col-sm-8
-            =render partial: 'businessman_text_information'
-          .col-xs-12.col-sm-4.text-center
-            figure
-              img.img-circle.img-responsive alt="" src==@businessman.avatar.url
-              figcaption.ratings
-                p
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star
-                  a href="#"
-                    span.fa.fa-star-o
+.row
+  .col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
+      .col-sm-12
+        .col-xs-12.col-sm-8
+          =render partial: 'businessman_text_information'
+        .col-xs-12.col-sm-4.text-center
+          figure
+            img.img-circle.img-responsive alt="" src==@businessman.avatar.url
+            figcaption.ratings
+              p
+                a href="#"
+                  span.fa.fa-star
+                a href="#"
+                  span.fa.fa-star
+                a href="#"
+                  span.fa.fa-star
+                a href="#"
+                  span.fa.fa-star
+                a href="#"
+                  span.fa.fa-star-o
 
-            -if current_user.profile == @businessman
-              =link_to edit_businessman_path(@businessman)
-                button.btn.btn-info.btn-block
-                  span.fa.fa-user
-                  |   Edit profile
+          -if current_user.profile == @businessman
+            =link_to edit_businessman_path(@businessman)
+              button.btn.btn-info.btn-block
+                span.fa.fa-user
+                |   Edit profile
 
-        .col-xs-12.divider.text-center
-          .col-xs-12.col-sm-4.emphasis
-            h2
-              strong = @businessman.ideas.count
-            p
-              small Ideas
-            =link_to for_businessman_ideas_path(businessman_id: @businessman.id)
-              button.btn.btn-success.btn-block
-                span.fa.fa-folder
-                |   See them
+      .col-xs-12.divider.text-center
+        .col-xs-12.col-sm-4.emphasis
+          h2
+            strong = @businessman.ideas.count
+          p
+            small Ideas
+          =link_to for_businessman_ideas_path(businessman_id: @businessman.id)
+            button.btn.btn-success.btn-block
+              span.fa.fa-folder
+              |   See them

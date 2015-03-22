@@ -1,7 +1,9 @@
 - model_class = Businessman
 
-.container
-  .row
-    .col-xs-12.col-sm-6.col-md-6
-      - @businessmen.each do |businessman|
-        = render partial: 'businessman', locals: { businessman: businessman }
+h2
+  center Businessmen
+
+.row
+  .col-xs-12.col-sm-6.col-md-6
+    - @businessmen.each do |businessman|
+      = render partial: 'businessman', locals: { businessman: businessman }

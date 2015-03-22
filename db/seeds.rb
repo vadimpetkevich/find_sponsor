@@ -15,20 +15,6 @@
   )
 end
 
-User.create(
-  password: '12345678',
-  email: 'petkevich.minsk@gmail.com',
-  role: 0,
-  login: 'vadim'
-)
-
-User.create(
-  password: '12345678',
-  email: 'castorg@gmail.com',
-  role: 1,
-  login: 'castorg'
-)
-
 Investor.all.each do |investor|
   investor.first_name = Faker::Name.first_name,
   investor.last_name = Faker::Name.last_name,
@@ -37,7 +23,7 @@ Investor.all.each do |investor|
   investor.branch = Faker::Lorem.sentence,
   investor.team_role = Faker::Lorem.sentence,
   investor.provide = Faker::Lorem.sentence
-  investor.location = Faker::Lorem.sentence
+  investor.location = Faker::Address.country
   investor.save
 end
 
@@ -49,17 +35,15 @@ Businessman.all.each do |businessman|
   businessman.save
 end
 
-(1..1000).each do
+(1..100).each do
   Idea.create(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.sentence,
     branch: Faker::Lorem.sentence,
-    location: Faker::Lorem.sentence,
+    location: Faker::Address.country,
     team: Faker::Lorem.sentence,
     plans: Faker::Lorem.sentence,
     demands: Faker::Lorem.sentence,
     businessman_id: Random.rand(1..Businessman.count)
   )
 end
-
-

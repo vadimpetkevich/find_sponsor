@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
   root 'home#show'
 
-  resources :businessmen
+  resources :businessmen, except: [:new, :create, :destroy]
 
-  resources :investors do
-    collection do
-      get 'interested', to: 'investors#interested'
-    end
-  end
-
-
+  resources :investors, except: [:new, :create, :destroy]
 
   resources :ideas do
     member do

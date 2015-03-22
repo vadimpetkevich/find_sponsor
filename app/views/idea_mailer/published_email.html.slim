@@ -1,9 +1,5 @@
 .container.span8
-  h2
-    | There is new published idea
+  | There is new published idea.
+  /=link_to 'idea', idea_url(@idea)
+  | May be it will be interesting for you.
 
-/    '
-/    = link_to @user.login, businessman_url(@idea.businessman)
-/  h3 = @idea.title
-/  h6
-/    =link_to 'More...', idea_url(@idea)

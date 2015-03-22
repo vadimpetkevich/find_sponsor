@@ -1,5 +1,3 @@
-hr
-
 span.fa.fa-thumbs-o-up
 '
 = idea.get_likes.count
@@ -10,19 +8,20 @@ span.fa.fa-thumbs-o-down
 = idea.get_dislikes.count
 br
 
-span.fa.fa-question
-'
-= link_to '#aboutModal', 'data-target' => '#myModal', 'data-toggle' => 'modal'
-    | Who are interested?
+-if @idea.businessman == current_user.profile
+  span.fa.fa-question
+  '
+  = link_to '#aboutModal', 'data-target' => '#myModal', 'data-toggle' => 'modal'
+      | Who are interested?
 
-#myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close aria-hidden="true" data-dismiss="modal" type="button"
-        h4#myModalLabel.modal-title Who are interested?
-        -if @interested_investors.count == 0
-          = render partial: 'no_investor_modal'
-        -else
-          -@interested_investors.each do |investor|
-            = render partial: 'investor_modal', locals: { investor:  investor }
+  #myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close aria-hidden="true" data-dismiss="modal" type="button"
+          h4#myModalLabel.modal-title Who are interested?
+          -if @interested_investors.count == 0
+            = render partial: 'no_investor_modal'
+          -else
+            -@interested_investors.each do |investor|
+              = render partial: 'investor_modal', locals: { investor:  investor }

@@ -11,9 +11,9 @@ class Ability
       cannot :vote, Idea
 
       can [:read, :update], Businessman
-      can [:read, :interested], Investor
+      can :read, Investor
     when 'investor'
-      can [:read, :vote], Idea
+      can [:read, :for_businessman, :vote], Idea
 
       can [:read, :update], Investor
       can :read, Businessman
