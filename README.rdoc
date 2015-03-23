@@ -11,7 +11,7 @@ Create database:
 
   bundle exec rake db:setup
 
-Configure environments: create file config/environment_variables.yml with following content
+Configure environments: create file 'config/environment_variables.yml' with following content
   development:
   GMAIL_USERNAME: name@gmail.com
   GMAIL_PASSWORD: password
