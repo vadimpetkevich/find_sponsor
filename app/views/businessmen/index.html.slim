@@ -1,9 +1,6 @@
-- model_class = Businessman
-
-h2
-  center Businessmen
-
-.row
-  .col-xs-12.col-sm-6.col-md-6
-    - @businessmen.each do |businessman|
+.col-xs-12.col-sm-6.col-md-6
+  - @businessmen.each do |businessman|
+    .row
       = render partial: 'businessman', locals: { businessman: businessman }
+    hr
+  = will_paginate @businessmen, renderer: BootstrapPagination::Rails

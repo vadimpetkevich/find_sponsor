@@ -5,6 +5,6 @@
     =investor.user.login
   =link_to 'More...', investor_path(investor)
 
-.pull-right
-  -if investor == current_user.profile
+-if investor == current_user.profile
+  .pull-right
     = render partial: 'action', locals: { investor: investor }
