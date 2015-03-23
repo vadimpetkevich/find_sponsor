@@ -6,7 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-(1..100).each do
+User.create(
+    password: '12345678',
+    email: 'petkevich.minsk@gmail.com',
+    role: 0,
+    login: 'vadim'
+  )
+
+User.create(
+    password: '12345678',
+    email: 'castorg@gmail.com',
+    role: 1,
+    login: 'maxim'
+  )
+
+(1..10).each do
   User.create(
     password: '12345678',
     email: Faker::Internet.email,
@@ -16,21 +30,23 @@
 end
 
 Investor.all.each do |investor|
-  investor.first_name = Faker::Name.first_name,
-  investor.last_name = Faker::Name.last_name,
-  investor.skype = Faker::Internet.user_name,
-  investor.birth_date = Faker::Date.between(90.years.ago, 10.years.ago),
-  investor.branch = Faker::Lorem.sentence,
-  investor.team_role = Faker::Lorem.sentence,
+  investor.avatar = Faker::Avatar.image
+  investor.first_name = Faker::Name.first_name
+  investor.last_name = Faker::Name.last_name
+  investor.skype = Faker::Internet.user_name
+  investor.birth_date = Faker::Date.between(90.years.ago, 10.years.ago)
+  investor.branch = Faker::Lorem.sentence
+  investor.team_role = Faker::Lorem.sentence
   investor.provide = Faker::Lorem.sentence
   investor.location = Faker::Address.country
   investor.save
 end
 
 Businessman.all.each do |businessman|
-  businessman.first_name = Faker::Name.first_name,
-  businessman.last_name = Faker::Name.last_name,
-  businessman.skype = Faker::Internet.user_name,
+  businessman.avatar = Faker::Avatar.image
+  businessman.first_name = Faker::Name.first_name
+  businessman.last_name = Faker::Name.last_name
+  businessman.skype = Faker::Internet.user_name
   businessman.birth_date = Faker::Date.between(90.years.ago, 10.years.ago)
   businessman.save
 end
