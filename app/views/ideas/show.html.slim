@@ -1,5 +1,4 @@
-- model_class = Idea
-
+z
 .row
   /! Blog Post Content Column
   .col-lg-8
@@ -10,6 +9,7 @@
         small
           = @idea.title
 
+    .pull-right
       -if @idea.businessman == current_user.profile
         = render partial: 'action', locals: { idea: @idea }
 
@@ -55,16 +55,15 @@
 
     hr
 
-  .col-sm-3.col-sm-offset-1.blog-sidebar
-      .sidebar-module.sidebar-module-inset
-      - if @idea.branch
-        h4 This idea about
-        p
-          - @idea.branch.split.each do |word|
-            span.label.label-info = word
-            '
-        hr
-      - if can? :vote, Idea
-        = render partial: 'vote', locals: { idea: @idea }
-      - else
-        = render partial: 'vote_info', locals: { idea: @idea }
+  .col-sm-3.col-sm-offset-1
+    - if @idea.branch
+      h4 This idea about
+      p
+        - @idea.branch.split.each do |word|
+          span.label.label-info = word
+          '
+      hr
+    - if can? :vote, Idea
+      = render partial: 'vote', locals: { idea: @idea }
+    - else
+      = render partial: 'vote_info', locals: { idea: @idea }
