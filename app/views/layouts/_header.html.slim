@@ -15,6 +15,7 @@
         li = link_to "Help", '#'
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          li.header-avatar =image_tag(current_user.profile.avatar.url(:thumb))
           li id="fat-menu" class="dropdown"
             a href="#" class="dropdown-toggle" data-toggle="dropdown"
               = current_user.login
