@@ -1,3 +1,4 @@
 row.col-md-8
   - ideas.each do |idea|
     = render partial: 'idea', locals: { idea: idea }
+  = will_paginate ideas, :theme => 'twitter-bootstrap-3'
