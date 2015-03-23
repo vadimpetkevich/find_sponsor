@@ -13,8 +13,8 @@ Create database:
 
 Configure environments: create file 'config/environment_variables.yml' with following content
   development:
-  GMAIL_USERNAME: name@gmail.com
-  GMAIL_PASSWORD: password
+    GMAIL_USERNAME: name@gmail.com
+    GMAIL_PASSWORD: password
   
 Seed:
   rake db:seed
