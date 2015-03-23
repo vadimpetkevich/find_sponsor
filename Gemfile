@@ -46,7 +46,6 @@ gem 'nilify_blanks'
 gem 'acts_as_votable'
 
 gem 'sidekiq'
-gem 'sidekiq_mailer'
 gem 'devise-async'
 
 gem 'faker'

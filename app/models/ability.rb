@@ -13,7 +13,7 @@ class Ability
       can [:read, :update], Businessman
       can :read, Investor
     when 'investor'
-      can [:read, :for_businessman, :vote], Idea
+      can [:read, :published, :for_businessman, :vote], Idea
 
       can [:read, :update], Investor
       can :read, Businessman

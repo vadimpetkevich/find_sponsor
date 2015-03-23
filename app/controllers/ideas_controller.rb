@@ -13,6 +13,14 @@ class IdeasController < ApplicationController
       @ideas = Idea.where(businessman_id: params[:businessman_id])
   end
 
+  def my
+      @ideas = Idea.where(businessman_id: current_user.profile.id)
+  end
+
+  def published
+      @ideas = Idea.published
+  end
+
   # GET /ideas/1
   # GET /ideas/1.json
   def show
@@ -99,8 +107,7 @@ class IdeasController < ApplicationController
   end
 
   def publish
-    @idea.published = true
-    @idea.save
+    @idea.update(published: true)
     redirect_to @idea, notice: 'Idea has been published'
   end
 

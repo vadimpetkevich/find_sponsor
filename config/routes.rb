@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :investors, except: [:new, :create, :destroy]
 
-  resources :ideas do
+  resources :ideas, except: [:index] do
     member do
       put 'like', to: 'ideas#like'
       put 'dislike', to: 'ideas#dislike'
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
     collection do
       get 'for_businessman', to: 'ideas#for_businessman'
+      get 'published', to: 'ideas#published'
+      get 'my', to: 'ideas#my'
     end
   end
 

@@ -14,7 +14,8 @@ class Idea < ActiveRecord::Base
   private
     def send_email
       if self.published
-        User.investor.each { |investor| IdeaMailer.published_email(investor, self).deliver }
+        investors = Investor.all
+        investors.each { |investor| IdeaMailer.delay.published_email(investor, self) }
       end
     end
 end

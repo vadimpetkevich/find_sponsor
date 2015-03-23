@@ -11,7 +11,7 @@ ul class="dropdown-menu"
   li
     =link_to 'Investors', investors_path
     =link_to 'Businessmen', businessmen_path
-    =link_to 'Ideas', ideas_path
+    =link_to 'Ideas', published_ideas_path
 
   li class="divider"
   li
@@ -21,7 +21,7 @@ ul class="dropdown-menu"
       | New idea
 
   li
-    =link_to for_businessman_ideas_path(businessman_id: current_user.profile.id)
+    =link_to my_ideas_path
       span.fa.fa-folder
       '
       | My ideas
