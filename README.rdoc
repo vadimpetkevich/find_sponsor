@@ -20,6 +20,10 @@ Add your own configuration to 'config/application.yml' like that:
 Create database:
   bundle exec rake db:setup
 
+Clear sidekiq queue:
+  rails c
+  Sidekiq.redis { |r| puts r.flushall }
+
 Seed:
   rake db:seed
 
