@@ -1,21 +1,25 @@
 = Find a Sponsor
 == Instructions for running
-  
-Install gems:
 
+Dependencies:
+  sudo apt-get install imagemagick postgresql  
+
+Install gems:
   bundle install
 
-Configure database: fill 'username' and 'password' in 'config/database.yml'
+Configure figaro:
+  figaro install
+  
+Add your own configuration to 'config/application.yml' like that:
+  development:
+    gmail_username: name@gmail.com
+    gmail_password: pwd
+    postgresql_db_username: db_username
+    postgresql_db_password: db_pwd
 
 Create database:
-
   bundle exec rake db:setup
 
-Configure environments: create file 'config/environment_variables.yml' with following content
-  development:
-    GMAIL_USERNAME: name@gmail.com
-    GMAIL_PASSWORD: password
-  
 Seed:
   rake db:seed
 
