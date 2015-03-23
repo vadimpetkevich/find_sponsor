@@ -3,10 +3,12 @@ class BusinessmenController < ApplicationController
   load_and_authorize_resource
   before_action :set_businessman, only: [:show, :edit, :update, :destroy]
 
+  BUSINESSMEN_PER_PAGE = 5
+
   # GET /businessmen
   # GET /businessmen.json
   def index
-    @businessmen = Businessman.all
+    @businessmen = Businessman.all.paginate(page: params[:page], per_page: BUSINESSMEN_PER_PAGE)
   end
 
   # GET /businessmen/1

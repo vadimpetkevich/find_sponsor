@@ -1,9 +1,6 @@
-- model_class = Investor
-
-h2
-  center Investors
-
-.row
-  .col-xs-12.col-sm-6.col-md-6
-    - @investors.each do |investor|
+.col-xs-12.col-sm-6.col-md-6
+  - @investors.each do |investor|
+    .row
       = render partial: 'investor', locals: { investor: investor }
+    hr
+  = will_paginate @investors, renderer: BootstrapPagination::Rails

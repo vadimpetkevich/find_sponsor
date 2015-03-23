@@ -3,22 +3,24 @@ class IdeasController < ApplicationController
   load_and_authorize_resource
   before_action :set_idea, only: [:show, :edit, :update, :destroy, :like, :dislike, :interesting, :publish]
 
+  IDEAS_PER_PAGE = 5
+
   # GET /ideas
   # GET /ideas.json
   def index
-      @ideas = Idea.all
+      @ideas = Idea.all.paginate(page: params[:page], per_page: IDEAS_PER_PAGE)
   end
 
   def for_businessman
-      @ideas = Idea.where(businessman_id: params[:businessman_id])
+      @ideas = Idea.where(businessman_id: params[:businessman_id]).paginate(page: params[:page], per_page: IDEAS_PER_PAGE)
   end
 
   def my
-      @ideas = Idea.where(businessman_id: current_user.profile.id)
+      @ideas = Idea.where(businessman_id: current_user.profile.id).paginate(page: params[:page], per_page: IDEAS_PER_PAGE)
   end
 
   def published
-      @ideas = Idea.published
+      @ideas = Idea.published.paginate(page: params[:page], per_page: IDEAS_PER_PAGE)
   end
 
   # GET /ideas/1
@@ -43,7 +45,7 @@ class IdeasController < ApplicationController
     @idea.businessman = current_user.profile
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to for_businessman_ideas_path(businessman_id: @idea.businessman.id), notice: 'Idea was successfully created.' }
+        format.html { redirect_to my_ideas_path, notice: 'Idea was successfully created.' }
         format.json { render :show, status: :created, location: @idea }
       else
         format.html { render :new }
@@ -71,7 +73,7 @@ class IdeasController < ApplicationController
   def destroy
     @idea.destroy
     respond_to do |format|
-      format.html { redirect_to for_businessman_ideas_path(businessman_id: @idea.businessman.id), notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to my_ideas_path, notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

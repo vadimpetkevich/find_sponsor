@@ -1,13 +1,10 @@
-.row
-  .col-sm-6.col-md-4
-    img.img-rounded.img-responsive alt="" src==investor.avatar.url
-  .col-sm-6.col-md-8
-    h4
-      =investor.user.login
+.col-sm-6.col-md-4
+  img.img-rounded.img-responsive alt="" src==investor.avatar.url
+.col-sm-6.col-md-8
+  h4
+    =investor.user.login
+  =link_to 'More...', investor_path(investor)
 
-    =link_to 'More...', investor_path(investor)
-
-    -if investor == current_user.profile
-      = render partial: 'action', locals: { investor: investor }
-
-hr
+-if investor == current_user.profile
+  .pull-right
+    = render partial: 'action', locals: { investor: investor }

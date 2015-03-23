@@ -1,3 +1,6 @@
-row.col-md-8
+.col-sm-8
   - ideas.each do |idea|
-    = render partial: 'idea', locals: { idea: idea }
+    .row
+      = render partial: 'idea', locals: { idea: idea }
+    hr
+  = will_paginate ideas, renderer: BootstrapPagination::Rails

@@ -1,11 +1,12 @@
 /! First Blog Post
-h1.text-center
+h2.text-center
   cite
     small
       = idea.title
+
+.pull-right
   -if idea.businessman == current_user.profile
     = render partial: 'action', locals: { idea: idea }
-
 
 p
   cite
@@ -24,9 +25,5 @@ p
   = idea.published ? 'Published idea' : 'This idea has not be published yet'
 
 =link_to idea_path(idea)
-  button.btn.btn-info
+  button.btn.btn-info.btn-xs
     | Read more...
-
-hr
-
-
