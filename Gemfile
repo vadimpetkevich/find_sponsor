@@ -44,6 +44,7 @@ gem 'paperclip'
 gem 'nilify_blanks'
 
 gem 'acts_as_votable'
+gem 'acts_as_commentable'
 
 gem 'sidekiq'
 gem 'devise-async'
