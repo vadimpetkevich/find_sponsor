@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   load_and_authorize_resource
   before_action :set_idea, only: [:show, :edit, :update, :destroy, :like, :dislike, :interesting, :publish]
 
-  IDEAS_PER_PAGE = 10
+  IDEAS_PER_PAGE = 5
 
   # GET /ideas
   # GET /ideas.json

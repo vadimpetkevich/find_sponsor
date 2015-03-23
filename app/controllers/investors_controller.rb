@@ -3,10 +3,12 @@ class InvestorsController < ApplicationController
   load_and_authorize_resource
   before_action :set_investor, only: [:show, :edit, :update, :destroy]
 
+  INVESTORS_PER_PAGE = 5
+
   # GET /investors
   # GET /investors.json
   def index
-    @investors = Investor.all
+    @investors = Investor.all.paginate(page: params[:page], per_page: INVESTORS_PER_PAGE)
   end
 
   # GET /investors/1
