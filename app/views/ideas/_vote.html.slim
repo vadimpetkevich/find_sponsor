@@ -1,20 +1,23 @@
 = link_to like_idea_path(idea), method: :put, remote: true, class: 'like-link'
   button.btn.btn-primary.btn-xs
-    span.fa.fa-thumbs-o-up
-    |  Like
+    span.fa.fa-thumbs-o-up.fa-lg
     '
     span.likes_count
       = idea.get_likes.count
 '
 = link_to dislike_idea_path(idea), method: :put, remote: true, class: 'dislike-link'
   button.btn.btn-warning.btn-xs
-    span.fa.fa-thumbs-o-down
-    |  Dislike
+    span.fa.fa-thumbs-o-down.fa-lg
     '
     span.dislikes_count
       = idea.get_dislikes.count
 '
 = link_to interesting_idea_path(idea), method: :put, remote: true, class: 'interesting-link'
-  button.btn.btn-info.btn-xs
-    span.fa.fa-question
+  button.btn.btn-success.btn-xs
     |  It's interesting
+    '
+    - if current_user.profile.liked? @idea, vote_scope: 'interesting'
+      span.interesting-span.fa.fa-circle
+    - else
+      span.interesting-span.fa.fa-circle-o
+

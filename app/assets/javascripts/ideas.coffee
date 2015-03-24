@@ -9,5 +9,8 @@ $(document).on 'ajax:success', '.dislike-link', (status,data,xhr)->
   return
 
 $(document).on 'ajax:success', '.interesting-link', (status,data,xhr)->
-  alert 'adsfadfsdf'
+  if data.happened == 'liked'
+    $('.interesting-span').toggleClass('fa-circle-o fa-circle');
+  else
+    $('.interesting-span').toggleClass('fa-circle fa-circle-o');
   return
