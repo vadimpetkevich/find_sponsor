@@ -1,5 +1,6 @@
 class Investor < ActiveRecord::Base
   nilify_blanks
+  acts_as_voter
 
   has_one :user, :as => :profile, :dependent => :destroy
 
