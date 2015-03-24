@@ -12,13 +12,14 @@ Configure figaro:
   
 Add your own configuration to 'config/application.yml' like that:
   development:
-    gmail_username: name@gmail.com
-    gmail_password: pwd
-    postgresql_db_username: db_username
-    postgresql_db_password: db_pwd
+    gmail_username: 'name@gmail.com'
+    gmail_password: 'pwd'
+    postgresql_db_username: 'db_username'
+    postgresql_db_password: 'db_pwd'
 
-Create database:
+Create and configure database:
   bundle exec rake db:setup
+  bundle exec rake db:migrate:reset 
 
 Clear sidekiq queue:
   rails c
