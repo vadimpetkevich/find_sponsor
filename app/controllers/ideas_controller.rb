@@ -79,7 +79,11 @@ class IdeasController < ApplicationController
   end
 
   def like
-    @idea.liked_by current_user.profile
+    if current_user.profile.liked? @idea
+      @idea.unliked_by current_user.profile
+    else
+      @idea.liked_by current_user.profile
+    end
 
     if request.xhr?
       head :ok
@@ -89,7 +93,11 @@ class IdeasController < ApplicationController
   end
 
   def dislike
-    @idea.disliked_by current_user.profile
+    if current_user.profile.disliked? @idea
+      @idea.undisliked_by current_user.profile
+    else
+      @idea.disliked_by current_user.profile
+    end
 
     if request.xhr?
       head :ok
@@ -99,7 +107,11 @@ class IdeasController < ApplicationController
   end
 
   def interesting
-    @idea.liked_by current_user.profile, vote_scope: 'interesting'
+    if current_user.profile.liked? @idea, vote_scope: 'interesting'
+      @idea.unliked_by current_user.profile, vote_scope: 'interesting'
+    else
+      @idea.liked_by current_user.profile, vote_scope: 'interesting'
+    end
 
     if request.xhr?
       head :ok
