@@ -86,7 +86,7 @@ class IdeasController < ApplicationController
     end
 
     if request.xhr?
-      head :ok
+       render json: { 'likes_count': @idea.get_likes.count, 'dislikes_count': @idea.get_dislikes.count }
     else
       redirect_to @idea
     end
@@ -100,7 +100,7 @@ class IdeasController < ApplicationController
     end
 
     if request.xhr?
-      head :ok
+      render json: { 'likes_count': @idea.get_likes.count, 'dislikes_count': @idea.get_dislikes.count }
     else
       redirect_to @idea
     end
