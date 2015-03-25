@@ -45,6 +45,7 @@ gem 'nilify_blanks'
 
 gem 'acts_as_votable'
 gem 'acts_as_commentable'
+gem 'commontator'
 
 gem 'sidekiq'
 gem 'devise-async'
@@ -67,4 +68,3 @@ group :development, :test do
 
   gem 'pry-rails'
 end
-

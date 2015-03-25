@@ -55,7 +55,7 @@ end
   Idea.create(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.sentence,
-    branch: Faker::Lorem.sentence,
+    branch: Faker::Lorem.sentence(1),
     location: Faker::Address.country,
     team: Faker::Lorem.sentence,
     plans: Faker::Lorem.sentence,
@@ -63,3 +63,28 @@ end
     businessman_id: Random.rand(1..Businessman.count)
   )
 end
+
+Idea.all.each do |idea|
+  idea.published = [true, false].sample
+  idea.liked_by Investor.find(Random.rand(1..Investor.count)), vote_scope: 'interesting'
+  idea.liked_by Investor.find(Random.rand(1..Investor.count))
+  idea.liked_by Investor.find(Random.rand(1..Investor.count))
+  idea.disliked_by Investor.find(Random.rand(1..Investor.count))
+  idea.save
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

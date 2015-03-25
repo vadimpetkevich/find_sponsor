@@ -1,6 +1,8 @@
 class Idea < ActiveRecord::Base
   nilify_blanks
   acts_as_votable
+  acts_as_commontable
+
   after_update :send_email, :if => :published_changed?
 
   belongs_to :businessman
