@@ -27,3 +27,7 @@
   margin: 5px;
   img { width: 100% }
 }
+
+body {
+  padding-bottom: 100px;
+}
