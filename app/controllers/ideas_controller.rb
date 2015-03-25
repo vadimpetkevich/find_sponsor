@@ -13,7 +13,7 @@ class IdeasController < ApplicationController
 
   def for_businessman
       @businessman = Businessman.find(params[:businessman_id])
-      @ideas = Idea.where(businessman_id: params[:businessman_id]).paginate(page: params[:page], per_page: IDEAS_PER_PAGE)
+      @ideas = Idea.published.where(businessman_id: params[:businessman_id]).paginate(page: params[:page], per_page: IDEAS_PER_PAGE)
   end
 
   def my
