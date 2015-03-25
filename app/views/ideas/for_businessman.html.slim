@@ -1,1 +1,8 @@
+h1.text-center
+  span.fa.fa-globe
+  cite
+    small
+      |  Published Ideas by
+      '
+      = link_to @businessman.user.login, businessman_path(@businessman)
 = render partial: 'ideas_list', locals: { ideas: @ideas }
