@@ -66,11 +66,14 @@ end
 
 Idea.all.each do |idea|
   idea.published = [true, false].sample
-  idea.liked_by Investor.find(Random.rand(1..Investor.count)), vote_scope: 'interesting'
-  idea.liked_by Investor.find(Random.rand(1..Investor.count))
-  idea.liked_by Investor.find(Random.rand(1..Investor.count))
-  idea.disliked_by Investor.find(Random.rand(1..Investor.count))
   idea.save
+end
+
+Idea.published.each do |published_idea|
+  published_idea.liked_by Investor.find(Random.rand(1..Investor.count)), vote_scope: 'interesting'
+  published_idea.liked_by Investor.find(Random.rand(1..Investor.count))
+  published_idea.liked_by Investor.find(Random.rand(1..Investor.count))
+  published_idea.disliked_by Investor.find(Random.rand(1..Investor.count))
 end
 
 
