@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save :set_profile
+  acts_as_commontator
 
   belongs_to :profile, :polymorphic => true, :dependent => :destroy
 
